@@ -1,16 +1,13 @@
 # CSS（层叠样式表）
 层叠样式表 (Cascading Style Sheets，缩写为 CSS），是一种 样式表 语言，用来描述 HTML 或 XML（包括如 SVG、MathML、XHTML 之类的 XML 分支语言）文档的呈现。CSS 描述了在屏幕、纸质、音频等其它媒体上的元素应该如何被渲染的问题。
 
-
-
 ### 级联规则和专用规则
 ## CSS 属性和值
 - 属性：人类可读的标识符，指示您想要更改的样式特征(例如font-size, width, background-color) 你想改变。
 - 值：每个指定的属性都有一个值，该值指示您希望如何更改这些样式特性(例如，要将字体、宽度或背景色更改为。)
 ### 函数
-*值可能以函数的形式出现*
-calc()函数
-rotate()函数
+*CSS 中属性的值可能以函数的形式出现*
+例如：`calc()` 函数，`rotate()` 函数
 
 ## @规则
 > @rules 是一些特殊的规则，为 CSS提供了一些关于如何表现的指导.
@@ -127,168 +124,6 @@ background-attachment: fixed;
 4. 作者样式表中的`!important`声明
 5. 用户样式表中的`!important `声明
 
-# 选择器
->CSS选择器是CSS规则的第一部分.它是元素和其他部分组合起来告诉浏览器哪个HTML元素应当是被选为应用规则中的CSS属性值的方式。
-选择器所选择的元素，叫做“选择器的对象”.
-## CSS 选择器种类
-*选择器和选择符可以同时使用*
-### [类型、类和 id 选择器](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors)
-标签（类型 / 元素）选择器
-```css
-/* 同时选择 p 标签和 li 标签 */
-p, li {
-    color: green;
-}
-```
-类选择器
-```CSS
-.special {
-  color: orange;
-  font-weight: bold;
-}
-```
-id选择器
-```CSS
-#intro {
-    font-weight:bold;
-}
-```
-全局选择器
-选择全部元素
-```CSS
-* {
-    font-weight:bold;
-}
-```
-### [标签属性选择器](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors)
-根据一个元素上的某个标签的属性是否存在以选择元素，或者根据一个有特定值的标签属性是否存在来选择
-存在与否、值选择器，子字符串匹配选择器，是否大小写敏感
-
-### [伪类与伪元素](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements)
-**伪类选择器用于样式化一个元素的特定状态**
-简单伪类、用户行为伪类；
-
-:hover伪类会在鼠标指针悬浮到一个元素上的时候选择这个元素
-```css
-/* 鼠标悬停移除下划线 */
-a:hover {
-  text-decoration: none;
-}
-```
-**伪元素用于选择一个元素的某个部分而不是元素自己**
-::first-line是会选择一个元素中的第一行
-
-**使用`::before` `::after` 生成内容**
-在内容前后插入`content`，实现“生成内容”
-
-### 关系选择器 / 选择运算符
->使用关系选择器，选择文档中的明确部分，会导致 CSS 规则*难以复用*。通常使用建立类的方法，应用到元素上。
-关系选择器适合用于无法编辑 HTML 的情况。
-
-**后代运算符/包含选择符** `article p`
-```css
-/* 仅选择嵌套在 <li> 元素内的 <em> */
-li em {
-  color: rebeccapurple;
-}
-```
-**子代选择符** `article > p`
-选择直接子元素
-
-**邻接兄弟**选择符 `h1 + p`
-选择恰好处于另一个在继承关系上同级的元素旁边的物件
-```css
-/* 选择紧紧相邻的两个标签元素中的 第二个元素 的样式 */
-h1 + p {
-  font-size: 200%;
-}
-```
-**通用兄弟**选择器 `h1 ~ p`
-选择一个元素的兄弟元素
-
-# 盒模型
-完整的 CSS 盒模型应用于块级盒子，内联盒子只使用盒模型中定义的部分内容。
->模型定义了盒的每个部分 —— margin, border, padding, and content —— 合在一起就可以创建我们在页面上看到的内容。
-## 块级盒子（Block box） 和 内联盒子（Inline box）
-在 CSS 中我们广泛地使用两种“盒子” —— **块级盒子 (block box)** 和 **内联盒子 (inline box)**。这两种盒子会在 **页面流 (page flow)** 和元素之间的关系方面表现出不同的行为：
-
-**Block box 的行为：**
-
-- 盒子会在内联的方向上扩展并占据父容器在该方向上的所有可用空间，在绝大数情况下意味着盒子会和父容器一样宽
-- 每个盒子都会换行
-- width 和 height 属性可以发挥作用
-- 内边距（padding）, 外边距（margin）和 边框（border）会将其他元素从当前盒子周围“推开”
-
-*除非特殊指定，诸如标题 (`<h1>`等) 和段落 (`<p>`) 默认情况下都是块级的盒子。*
-
-**Inline box 的行为：**
-- 盒子不会产生换行。
-- width 和 height 属性将不起作用。
-- 垂直方向的内边距、外边距以及边框会被应用但是不会把其他处于 inline 状态的盒子推开。
-- 水平方向的内边距、外边距以及边框会被应用且会把其他处于 inline 状态的盒子推开。
-
-*用做链接的 `<a>` 元素、 `<span>`、 `<em>` 以及 `<strong>` 都是默认处于 inline 状态的。*
-
-## 内部和外部显示类型
-
-> 我们通过对盒子 `display `属性的设置，比如 `inline` 或者 `block` ，来控制盒子的外部显示类型。
-
-外部显示类型：决定盒子是块级还是内联。
-内部显示类型：决定了盒子内部元素是如何布局的。
-## 盒模型组成
-- Content box: 这个区域是用来显示内容，大小可以通过设置 width 和 height.
-- Padding box: 包围在内容区域外部的空白区域； 大小通过 padding 相关属性设置。
-- Border box: 边框盒包裹内容和内边距。大小通过 border 相关属性设置。
-- Margin box: 这是最外面的区域，是盒子和其他元素之间的空白区域。大小通过 margin 相关属性设置。
-### 标准盒模型 *content box*
-在标准模型中，如果你给盒设置 `width` 和 `height`，实际设置的是 content box。 
-padding 和 border 再加上设置的宽高一起决定整个盒子的大小。
-
-### IE（替代 / 怪异）盒模型 *border box*
-内容宽度是该宽度减去边框和填充部分
-
-设置所有box使用替代模式
-```css
-html {
-  box-sizing: border-box;
-}
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-```
-
-## 内外边距、边框
-**外边距**是盒子周围一圈看不到的空间。它会把其他元素从盒子旁边推开。外边距属性值可以为正也可以为负。设置负值会导致和其他内容重叠。无论使用标准模型还是替代模型，外边距总是在计算可见部分后额外添加。
-**外边距折叠**：如果你有两个外边距相接的元素，这些外边距将合并为一个外边距，即最大的单个外边距的大小。
-```css
-.box {
-  margin-top: -40px;
-  margin-right: 30px;
-  margin-bottom: 40px;
-  margin-left: 4em;
-  /* 两种定义方式均可用 */
-  margin:-40px 30px 40px 4em;
-}
-```
-
-**边框**
-可以使用 `border` 属性一次设置所有四个边框的宽度、颜色和样式。
-也可以使用 `border-top` `border-right` `border-bottom` `border-left` 分别设置每一条边
-也可以直接设置所有边的颜色、样式或宽度：`border-width` `border-style` `border-color`
-以及全部单独设置，例如：`border-top-width`
-
-**内边距**位于边框和内容区域之间。与外边距不同，您不能有负数量的内边距，所以值必须是 0 或正的值。应用于元素的任何背景都将显示在内边距后面，内边距通常用于将内容推离边框。
-`padding-top` `padding-right` `padding-bottom` `padding-left`
-
-## 内联盒子模型
-部分方法使用，例如：边距、边框和内边距
-*宽度、高度不适用*
-
-### display: inline-block
-- 设置 `width` 和 `height` 属性会生效。
-- `padding`, `margin`, 以及 `border` 会推开其他元素。
-
-*适用于导航栏中*
 
 # 背景和边框
 ## 背景样式
@@ -397,7 +232,7 @@ CSS 为了减少数据损失，不会隐藏盒子中的内容
 ## 设置最大最小值（min-和 max-尺寸）
 例如：`max-width` 的常见用法为，在没有足够空间以原有宽度展示图像时，让图像缩小，同时确保它们不会比这一宽度大。
 
-## 视口单位
+## 视口单位 view_port
 使用 `vw` `vh` 单位，随用户窗口大小改变
 *`1vh` 等于视口高度的 1%，`1vw`则为视口宽度的 1%*
 
@@ -408,7 +243,7 @@ CSS 为了减少数据损失，不会隐藏盒子中的内容
 ## 调整图像大小
 - 设置 `max-width: 100%`
 - 使用 `object-fit` 属性，`cover` `contain` 值
-## form元素
+## form 表单元素
 [HTML Forms module](https://developer.mozilla.org/zh-CN/docs/Learn/Forms)
 表单元素默认不会继承字体样式，需要设置继承属性才能继承父元素属性
 
@@ -431,6 +266,56 @@ textarea {
   overflow: auto;
 } 
 ```
+
+## 响应式设计
+响应式网页设计（responsive web design，RWD）使Web页面更好地适应不同的屏幕尺寸
+- 液态网格
+- 液态图像
+- 媒体查询
+
+**响应式图像**
+```css
+img {
+  max-width: 100%:
+} 
+```
+**响应式排版**
+- 媒体查询
+- 视口单位
+
+**视口 Meta 标签**
+```HTML
+<meta name="viewport" content="width=device-width,initial-scale=1">
+```
+
+### [媒体查询](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Media_queries)
+```css
+/* 仅在宽度大于800px的设备上应用样式 */
+@media screen and (min-width: 800px) {
+  .container {
+    margin: 1em 2em;
+  }
+} 
+```
+### 灵活网格
+在 float 布局中，通过使用像素并把布局转化为百分数的方式设计：
+```css
+/* target / context = result  */
+.col {
+  width: 6.25%; /* 60 / 960 = 0.0625 */
+} 
+
+```
+### 现代布局技术
+- 多列布局
+- 弹性布局
+- 网格布局
+
+## 旧浏览器CSS支持
+https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Supporting_Older_Browsers
+
+
+
 # 其他
 [HTML表格的样式化](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Styling_tables)
 [调试CSS](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Debugging_CSS)
