@@ -22,16 +22,20 @@ Browser_Object_Module（浏览器对象模型）
 
 > JavaScript 是一种弱类型语言（或者说动态语言）。不用提前声明变量类型，变量类型在运行过程中自动确定，并且JavaScript拥有动态类型，相同的变量的数据类型是可能发生变化的。
 
-**6个基本数据类型：**
+**八种基本类型：**
 
 - **Number**
     >数字型包含整型和浮点型，默认值为0
     进制表示：八进制前加0，十六进制前加0x
     无穷值表示：Infinity（无穷大）
     NaN：Not_a_number，非数字。可以通过 isNaN() 函数判断。
+- **bigint**
+表示任意长度的整数，在数字后添加n `const bigInt = 1234n;`
+*最近被添加* 不能在与number类型计算时隐式转换
 - **String**
    >获取字符串长度：length属性
 - **Boolean** 默认值为false
+- **symbol** 用于唯一标识符
 - **Undefined** 申明变量（未赋值）默认类型
 - **Null** 空值
 - **Object** 对象
@@ -198,3 +202,4 @@ alert( sum(1, 2) ); // 3
 `'use strict'` ES5特性
 用于明确激活使用新特性，启用后无法撤销
 使用 class module 的代码会自动启用严格模式
+*浏览器控制台默认不启用*
