@@ -46,7 +46,9 @@
 > *`flex-direction` 和 `flex-wrap` 的缩写形式 `flex-flow`*
 
 ### 动态尺寸
+
 共有三个article元素，则利用下面的css样式会在满足最小宽度为200px的前提下，平均分配 1/4, 1/4, 2/4 的可用宽度。
+
 ```css
 article {
   flex: 1 200px;
