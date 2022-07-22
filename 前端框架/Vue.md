@@ -110,7 +110,24 @@ Vue 是一个渐进式现代 JavaScript 框架，可以逐步集成到应用中
 
 监听DOM事件，并在触发时运行javascript代码或方法（将方法绑定到事件上）。
 
-## 计算属性
+### 计算属性
 
 根据其他值所计算出来的，例如统计数组中符合条件的数量等
 计算属性将结果缓存起来
+
+```javascript
+computed: {
+  listSummary() {
+    const numberFinishedItems = this.ToDoItems.filter(item =>item.done).length
+    return `${numberFinishedItems} out of ${this.ToDoItems.length} items completed`
+  }
+}
+```
+
+### Vue 条件渲染
+
+`v-if` `v-else` `v-else-if`
+
+### 焦点管理
+
+
