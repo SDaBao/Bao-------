@@ -84,3 +84,76 @@ Vue 是一个渐进式现代 JavaScript 框架，可以逐步集成到应用中
 
 - key 属性 用于帮助 Vue 标识列表中的元素
     标识需要是唯一的，数字或者字符串类型
+
+### $emit 触发当前实例上的事件，附加参数传给监听器回调
+
+- 父组件可以使用 props 把数据传给子组件。
+- 子组件可以使用 $emit 触发父组件的自定义事件。
+    `vm.$emit( event, […args] )` 子组件触发自定义事件
+    `vm.$on( event, fn )` 父组件监听并调用方法
+
+### v-bind 绑定事件
+
+将一个或多个属性或者一个组件的 prop 动态绑定到表达式
+
+### v-module 创建双向绑定
+
+在表单元素上创建双向数据绑定，监听输入事件，根据控件类型自动选取正确的方法来更新元素。
+*本质上是语法糖*
+
+修饰符：
+
+- `.lazy` 改变同步使用的事件为 change事件（减少同步数据次数）
+- `.trim` 删除输入前后的空格
+
+### v-on 监听事件
+
+监听DOM事件，并在触发时运行javascript代码或方法（将方法绑定到事件上）。
+
+### 计算属性
+
+根据其他值所计算出来的，例如统计数组中符合条件的数量等
+计算属性将结果缓存起来
+
+```javascript
+computed: {
+  listSummary() {
+    const numberFinishedItems = this.ToDoItems.filter(item =>item.done).length
+    return `${numberFinishedItems} out of ${this.ToDoItems.length} items completed`
+  }
+}
+```
+
+### Vue 条件渲染
+
+`v-if` `v-else` `v-else-if`
+
+### 焦点管理
+
+### 虚拟 DOM
+
+虚拟 DOM 在内存中存储所有 DOM 结点的映射，是一个 JS 对象
+
+### $refs 获取 DOM 元素
+
+在标签中，添加ref属性，属性值必须唯一，设置在Vue中可通过$refs获取的标签
+
+### $nextTick() 异步函数下一次更新DOM后执行
+
+## 组件生命周期
+
+生命周期是Vue组件经历的一系列事件。
+是从组件在VDOM中创建到在VDOM中销毁的一个过程。
+
+使用生命周期方法，可以在生命周期的各个阶段运行方法。多用于获取数据
+
+1. beforeCreate() — Runs before the instance of your component is created. Data and events are not yet available.
+2. created() — Runs after your component is initialized but before the component is added to the VDOM. This is often where data fetching occurs.
+3. beforeMount() — Runs after your template is compiled, but before your component is rendered to the actual DOM.
+4. mounted() — Runs after your component is mounted to the DOM. Can access refs here.
+5. beforeUpdate() — Runs whenever data in your component changes, but before the changes are rendered to the DOM.
+6. updated() — Runs whenever data in your component has changed and after the changes are rendered to the DOM.
+7. beforeDestroy() — Runs before a component is removed from the DOM.
+8. destroyed() — Runs after a component has been removed from the DOM
+9. activated() — Only used in components wrapped in a special keep-alive tag. Runs after the component is activated.
+10. deactivated() — only used in components wrapped in a special keep-alive tag. Runs after the component is deactivated.
