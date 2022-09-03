@@ -114,8 +114,29 @@ alert( 123456..toString(36) ); // 2n9c（表达式第一个点表示小数点，
 
 ## Iterable object（可迭代对象）
 
+可迭代对象是可在 `for...of` 循环中使用的对象。（任何对象都可以被定制为可迭代对象）
 
-map<int，int>
-unordered_map<int,int>
-list<pair<int,int>>
-vector<pair<int,int>>
+- 可迭代对象必须实现 `Symbol.iterator` 方法
+  - obj[Symbol.iterator]() 的结果被称为 迭代器（iterator）
+  - 迭代器必须有 `next()` 方法，返回一个 `{done: Boolean, value: any}` 对象
+- `Symbol.iterator` 方法可以被 `for...of` 自动调用，也可以手动调用
+- 字符串迭代器能够识别代理对（utf-16拓展字符）
+
+类数组对象：有索引属性和 `length` 属性的对象
+
+**`Array.from` 将可迭代对象或类数组对象转化为真正的数组，使其可以应用数组方法。**
+
+## Map 与 Set
+
+### Map
+
+- map 可以使用对象作为键，比较键的方式：`SameValueZero 算法` 类似于全等于，但可以比较 NaN
+- 迭代方法：`map.keys()` `map.values()` `map.entries()`（[key, value]）`forEach`
+- 创建 Map：`[key, value]` 数组 `Object.entries(obj)`（返回键值对数组）
+- 由 Map 创建对象：`Object.fromEntries()`（map转换成键值对数组，由键值对数组创建）
+
+### Set
+
+- 值不重复
+- 迭代方法：`for..of` 或 `forEach`，map 中的方法通用支持。
+- 大部分方法兼容 Map，并相同。
