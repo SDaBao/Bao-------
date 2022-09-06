@@ -117,7 +117,7 @@ alert( 123456..toString(36) ); // 2n9c（表达式第一个点表示小数点，
 可迭代对象是可在 `for...of` 循环中使用的对象。（任何对象都可以被定制为可迭代对象）
 
 - 可迭代对象必须实现 `Symbol.iterator` 方法
-  - obj[Symbol.iterator]() 的结果被称为 迭代器（iterator）
+  - `obj[Symbol.iterator]()` 的结果被称为 迭代器（iterator）
   - 迭代器必须有 `next()` 方法，返回一个 `{done: Boolean, value: any}` 对象
 - `Symbol.iterator` 方法可以被 `for...of` 自动调用，也可以手动调用
 - 字符串迭代器能够识别代理对（utf-16拓展字符）
@@ -140,3 +140,55 @@ alert( 123456..toString(36) ); // 2n9c（表达式第一个点表示小数点，
 - 值不重复
 - 迭代方法：`for..of` 或 `forEach`，map 中的方法通用支持。
 - 大部分方法兼容 Map，并相同。
+
+## WeakMap and WeakSet（弱映射和弱集合）
+
+- WeakMap 的键必须是对象（不是原始值）
+- WeakMap 不会阻止对象的垃圾回收（如果对象不再在其他地方被引用，则在内存中和 Map 中都会被删除）
+- 不支持迭代以及 keys()，values() 和 entries() 方法
+  > 限制原因：不能准确地知道对象何时被回收
+
+> 主要应用场景：
+>
+> - 处理属于另一个代码的对象（该对象的索引被置空后在weakMap中同步清除）
+> - 缓存函数结果（不再需要对象后自动清除）
+
+- weakSet 只能添加对象，且只有在其他地方可访问的才可被保存
+- 不可迭代，不支持 size 和 keys()
+
+## 对象迭代（对象转换数组）
+
+- 普通对象可用的迭代方法：
+  - `Object.keys(obj)` —— 返回一个包含该对象所有的键的数组。
+  - `Object.values(obj)` —— 返回一个包含该对象所有的值的数组。
+  - `Object.entries(obj)` —— 返回一个包含该对象所有 `[key, value]` 键值对的数组。
+- `Object.fromEntries(array)` 转换数组为对象（配合 `Object.entries(obj)` 使对象可使用数组方法）
+
+## 解构赋值
+
+### 数组解构
+
+使数组或对象拆解到一系列对象中
+
+- 解构不会修改原来的数组
+- 解构对象可以是任何可迭代对象
+- 赋值对象可以是任何可被赋值的形参
+
+### 对象解构
+
+- 等号左侧的模式（pattern）指定属性和变量之间的映射关系
+  > 模式可以添加属性的赋值对象、默认值
+- 嵌套解构可以用于提取更深层数据
+
+- 智能函数：将函数的多个参数作为对象传入（函数负责将对象解构，使用默认值应当指定空对象）
+
+## 日期与时间
+
+## JSON 方法
+
+`JSON.stringify(value, replacer, spaces)`
+
+- JSON 是语言无关的纯数据规范（会跳过函数属性、Symbol类型的键与值、存储 undefined 的属性）
+- 对象自定义 toJSON 方法，自定义 `JSON.stringify` 结果（会自动调用以返回 stringify 结果）
+
+`JSON.parse(str, [reviver])`
