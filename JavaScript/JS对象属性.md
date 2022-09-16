@@ -32,3 +32,25 @@ let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));
 
 ## getter 与 setter
 
+> 对象有两种属性类型：数据属性和**访问器属性**（获取与设置值的函数，访问器不能有value）
+
+```JS
+let obj = {
+  get propName() {
+    // 当读取 obj.propName 时，getter 起作用
+  },
+
+  set propName(value) {
+    // 当执行 obj.propName = value 操作时，setter 起作用
+  }
+};
+```
+
+访问器属性：
+
+- get —— 一个没有参数的函数，在读取属性时工作，
+- set —— 带有一个参数的函数，当属性被设置时调用，
+- enumerable —— 与数据属性的相同，
+- configurable —— 与数据属性的相同。
+
+
