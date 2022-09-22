@@ -1,15 +1,21 @@
 # CSS（层叠样式表）
+
 层叠样式表 (Cascading Style Sheets，缩写为 CSS），是一种 样式表 语言，用来描述 HTML 或 XML（包括如 SVG、MathML、XHTML 之类的 XML 分支语言）文档的呈现。CSS 描述了在屏幕、纸质、音频等其它媒体上的元素应该如何被渲染的问题。
 
 ### 级联规则和专用规则
+
 ## CSS 属性和值
+
 - 属性：人类可读的标识符，指示您想要更改的样式特征(例如font-size, width, background-color) 你想改变。
 - 值：每个指定的属性都有一个值，该值指示您希望如何更改这些样式特性(例如，要将字体、宽度或背景色更改为。)
+
 ### 函数
+
 *CSS 中属性的值可能以函数的形式出现*
 例如：`calc()` 函数，`rotate()` 函数
 
 ## @规则
+
 > @rules 是一些特殊的规则，为 CSS提供了一些关于如何表现的指导.
 ```css
 /* 将额外的样式表导入主CSS样式表 */
@@ -18,7 +24,9 @@
 >@media，它允许您使用 媒体查询 来应用CSS，仅当某些条件成立(例如，当屏幕分辨率高于某一数量，或屏幕宽度大于某一宽度时)。
 
 ## 速记属性
+
 >一些属性，如 font, background, padding, border, and margin 等属性称为速记属性--这是因为它们允许您在一行中设置多个属性值，从而节省时间并使代码更整洁。
+
 ```css
 background: red url(bg-graphic.png) 10px 10px repeat-x fixed;
 /* 上下部分代码等价 */
@@ -30,6 +38,7 @@ background-attachment: fixed;
 ```
 
 ## CSS工作方式
+
 1. 浏览器载入HTML文件（比如从网络上获取）。
 2. 将HTML文件转化成一个DOM（Document Object Model），DOM是文件在计算机内存中的表现形式，下一节将更加详细的解释DOM。
 3. 接下来，浏览器会拉取该HTML相关的大部分资源，比如嵌入到页面的图片、视频和CSS样式。JavaScript则会稍后进行处理，简单起见，同时此节主讲CSS，所以这里对如何加载JavaScript不会展开叙述。
@@ -83,7 +92,9 @@ background-attachment: fixed;
 将属性值还原为未更改时的值。*很少被浏览器支持*
 
 ## 层叠
+
 出现冲突时，应用css规则影响因素：
+
 1. 重要程度
 2. 优先级
 3. 资源顺序

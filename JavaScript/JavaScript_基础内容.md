@@ -40,7 +40,12 @@ Browser_Object_Module（浏览器对象模型）
 - **Null** 空值
 - **Object** 对象
 
-**数据类型检测方法： `typeof`**
+**数据类型判断方法：**
+
+1. `typeof`
+2. `instanceof` 判断实例（由构造类型判断）
+3. 基于 Object 的 `toString.call()`
+4. 判断 Object 类型：基于 `constructor` 判断
 
 字面量：源代码中一个固定值的表示方法。
 
