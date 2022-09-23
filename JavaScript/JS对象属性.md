@@ -52,5 +52,3 @@ let obj = {
 - set —— 带有一个参数的函数，当属性被设置时调用，
 - enumerable —— 与数据属性的相同，
 - configurable —— 与数据属性的相同。
-
-
