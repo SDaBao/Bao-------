@@ -4,44 +4,106 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IndexedDB demo</title>
-    <link href="style.css" rel="stylesheet">
-    <script src="index.js" defer></script>
+    <title>css demo</title>
+    <style>
+        #position {
+            position: relative;
+            height: 50px;
+            width: 50px;
+            background-color: azure;
+        }
+        .pos-item {
+            height: 20px;
+            width: 20px;
+            background-color: aqua;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: antiquewhite;
+            height: 50px;
+            width: 50px;
+        }
+        .flex-item {
+            height: 20px;
+            width: 20px;
+            background-color: lightgoldenrodyellow;
+        }
+
+        #grid {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            background-color: lightblue;
+            height: 50px;
+            width: 50px;
+        }
+        .grid-item {
+            height: 20px;
+            width: 20px;
+            background-color: lightgreen;
+        }
+
+        .trangle {
+            width: 0;
+            height: 0;
+            border-top: 100px solid red;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+        }
+
+    </style>
 </head>
 
 <body>
-    <header>
-        <h1>IndexedDB notes demo</h1>
-    </header>
+    <div id="position">
+        <div class="pos-item">pos</div>
 
-    <main>
-        <section class="note-display">
-            <h2>Notes</h2>
-            <ul>
+    </div>
+    <div id="flex">
+        <div class="flex-item">flex</div>
 
-            </ul>
-        </section>
-        <section class="new-note">
-            <h2>Enter a new note</h2>
-            <form>
-                <div>
-                    <label for="title">Note title</label>
-                    <input id="title" type="text" required>
-                </div>
-                <div>
-                    <label for="body">Note text</label>
-                    <input id="body" type="text" required>
-                </div>
-                <div>
-                    <button>Create new note</button>
-                </div>
-            </form>
-        </section>
-    </main>
+    </div>
+    <div id="grid">
+        <div class="grid-item">grid</div>
 
-    <footer>
-        <p>Copyright nobody. Use the code as you like.</p>
-    </footer>
+    </div>
+    <div class="trangle">css三角形</div>
 </body>
+<script>
+    const text = "aa{a.b}aa{a.c}b{a.d.e}";
+    const a = {
+        b: 111,
+        c: 222,
+        d:{
+            e: 333
+        }
+    }
 
+    function replaceTemplate(str, obj) {
+        const reg = /\{([a-z]+[\.a-z]+)\}/;
+        let ans = str.slice(0);
+
+        while(reg.test(ans)) {
+            const arr = RegExp.$1.split('.').slice(1);
+            let val = obj;
+            arr.forEach(p => {
+                val && (val = val[p]);
+            });
+            console.log(arr, val, ans);
+            ans = val ? ans.replace(/\{[a-z]+[\.a-z]+\}/, val) : ans;
+        }
+        console.log(reg.test(ans))
+        return ans;
+    }
+
+    console.log(replaceTemplate(text, a));
+
+</script>
 </html>

@@ -98,7 +98,7 @@ Promisification 指将一个接受回调的函数转换为一个返回 promise �
 
 `async/await` 是以更舒适的方式使用 promise 的一种特殊语法
 
-- asycn：`async function f() { return 1; }` 函数总返回一个 promise，非 promise 值被自动包装在 resolved 的 promise 中。
+- async：`async function f() { return 1; }` 函数总返回一个 promise，非 promise 值被自动包装在 resolved 的 promise 中。
 - await：让 JavaScript 引擎等待直到 promise 完成（settle）并返回结果。
   - 只在 async 函数内工作，不能在普通函数中使用（报错）
   - 会暂停函数的执行，直到 promise settled
