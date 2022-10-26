@@ -105,5 +105,18 @@
 
     console.log(replaceTemplate(text, a));
 
+    const url = 'http://127.0.0.1:5500/test.html?a=1&b=2';
+    function getQueryString(url) {
+        const keys = url.match(/([^?&]+)(?==)/g);
+	    const values = url.match(/(?<==)([^&]*)/g);
+        console.log(keys, values)
+        const params = {};
+        for(const index in keys) {
+            params[keys[index]] = values[index];
+        }
+        return params;
+    }
+    console.log(getQueryString(url))
+
 </script>
 </html>
